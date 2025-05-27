@@ -1,0 +1,49 @@
+﻿@model List<MvcAWSElastiCache.Models.Coche>
+
+@{
+    ViewData["Title"] = "Favoritos";
+}
+
+<h1 class="text-center mt-4">🧡 Coches Favoritos</h1>
+
+@if (Model == null || Model.Count == 0)
+{
+    <div class="alert alert-warning text-center">
+        No hay coches seleccionados como favoritos.
+    </div>
+}
+else
+{
+    <table class="table table-bordered mt-4">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Imagen</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var coche in Model)
+            {
+                <tr>
+                    <td>@coche.IdCoche</td>
+                    <td>@coche.Marca</td>
+                    <td>@coche.Modelo</td>
+                    <td>
+                        <img src="@coche.Imagen" width="150" class="img-thumbnail" />
+                    </td>
+                    <td>
+                        <a asp-action="DeleteFavorito" asp-route-idcoche="@coche.IdCoche" class="btn btn-danger">
+                            Eliminar
+                        </a>
+                        <a asp-action="Details" asp-route-id="@coche.IdCoche" class="btn btn-secondary ms-2">
+                            Detalles
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

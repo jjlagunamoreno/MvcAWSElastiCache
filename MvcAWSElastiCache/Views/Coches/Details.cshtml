@@ -1,0 +1,16 @@
+﻿@model Coche
+
+@{
+    ViewData["Title"] = "Detalles del Coche";
+}
+
+<h1>Detalles del Coche</h1>
+
+<div class="card" style="width: 20rem;">
+    <img src="@Model.Imagen" class="card-img-top" alt="Imagen de @Model.Modelo" />
+    <div class="card-body">
+        <h5 class="card-title">@Model.Marca @Model.Modelo</h5>
+        <p><strong>ID:</strong> @Model.IdCoche</p>
+        <a asp-action="Index" class="btn btn-secondary">Volver a la lista</a>
+    </div>
+</div>
